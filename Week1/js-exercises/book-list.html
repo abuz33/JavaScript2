@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>My Book List</title>
+</head>
+
+<body>
+  <script>
+    const Books = [
+      {
+        title: 'Alchemist',
+        author: 'Paulo Chello',
+        alreadyRead: true,
+      },
+      {
+        title: 'War and Peace',
+        author: 'Leo Tolstoy',
+        alreadyRead: false,
+      },
+      {
+        title: 'The 40 rules of Love',
+        author: 'Elif Shafak',
+        alreadyRead: true,
+      },
+    ];
+
+    const newList = document.createElement('ul');
+
+    for (const book of Books) {
+      const liTag = document.createElement('li');
+      const paragraph = document.createElement('p');
+      paragraph.innerText = `The title of the book is ${book.title} and the book is written by ${book.author}`;
+      if (book.alreadyRead === true) {
+        paragraph.style.color = 'Green';
+      } else {
+        paragraph.style.color = 'Red';
+      }
+      newList.appendChild(liTag);
+      liTag.appendChild(paragraph);
+    }
+    document.body.appendChild(newList);
+
+  </script>
+</body>
+
+</html>
