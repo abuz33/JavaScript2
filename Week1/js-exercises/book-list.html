@@ -5,6 +5,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <style>
+    img {
+      width : 250px;
+    }
+  </style>
   <title>My Book List</title>
 </head>
 
@@ -15,17 +20,22 @@
         title: 'Alchemist',
         author: 'Paulo Chello',
         alreadyRead: true,
+        imageUrl: 'https://i.ibb.co/g90CBpq/The-Alchemist-1024x1024.png'
       },
       {
         title: 'War and Peace',
         author: 'Leo Tolstoy',
         alreadyRead: false,
+        imageUrl: 'https://i.ibb.co/GHctgd0/forty-rules-of-love.jpg'
+
       },
       {
         title: 'The 40 rules of Love',
         author: 'Elif Shafak',
         alreadyRead: true,
-      },
+        imageUrl: 'https://i.ibb.co/mCfv7JH/war-and-peace.jpg'
+
+      }
     ];
 
     const newList = document.createElement('ul');
@@ -33,14 +43,17 @@
     for (const book of Books) {
       const liTag = document.createElement('li');
       const paragraph = document.createElement('p');
+      const img = document.createElement('img');
+      img.src = book.imageUrl;
       paragraph.innerText = `The title of the book is ${book.title} and the book is written by ${book.author}`;
       if (book.alreadyRead === true) {
         paragraph.style.color = 'Green';
       } else {
         paragraph.style.color = 'Red';
       }
-      newList.appendChild(liTag);
       liTag.appendChild(paragraph);
+      newList.appendChild(liTag);
+      newList.appendChild(img);
     }
     document.body.appendChild(newList);
 

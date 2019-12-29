@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i&display=swap');
+        *
+        {
+            border:none; 
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: #060a1f;
+            flex-direction: column;
+        }
+        #clock {
+            padding-top: 100px;
+        }
+        #clock h2,
+        #calendar h2
+        {
+            position: relative;
+            display: block;
+            color: #fff;
+            text-align: center;
+            margin: 10px 0;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4em;
+            font-size: 0.8em;
+        }
+        #clock #time,
+        #calendar #date
+        {
+            display: flex;
+
+        }
+        #clock #time div,
+        #calendar #date div
+        {
+            position: relative;
+            margin: 0 5px;
+            -webkit-box-reflect: below 1px linear-gradient(transparent, #0005);
+        }
+        #clock #time div span,
+        #calendar #date div span
+        {
+            position: relative;
+            display: block;
+            width: 100px;
+            height: 80px;
+            background: #2196f3;
+            color: #fff;
+            font-weight: 300;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 3em;
+            z-index: 10;
+            box-shadow: 0 0 0 1px rgba(0 0 0 0.2);
+        }
+        #clock #time div span:nth-child(2),
+        #calendar #date div span:nth-child(2)
+        {
+            height: 30px;
+            font-size: 0.7em;
+            letter-spacing: 0.2em;
+            font-weight: 500;
+            z-index: 9;
+            box-shadow: none;
+            background: #127fd6;
+        }
+        #clock #time div:last-child span,
+        #calendar #date div:last-child span
+
+        {
+            width: 140px;
+            background: #ff006a;
+        }
+        #clock #time div:last-child span:nth-child(2),
+        #calendar #date div:last-child span:nth-child(2)
+        {
+            background: #ec0062;
+        }
+
+    </style>
+    <meta charset="utf-8">
+    <title> Calendar and Time </title>
+  </head>
+  <body>
+    <div id="calendar">
+        <h2>The date is now</h2>
+        <div id="date">
+            <div><span id='day'>00</span><span>Day</span></div>
+            <div><span id='month'>00</span><span>Month</span></div>
+            <div><span id='year'>0000</span><span>Year</span></div>
+        </div>
+    </div>
+    <div id="clock">
+        <h2>The time is now</h2>
+        <div id="time">
+            <div><span id='hour'>00</span><span>Hours</span></div>
+            <div><span id='minute'>00</span><span>Minutes</span></div>
+            <div><span id='second'>00</span><span>Seconds</span></div>
+        </div>
+    </div>
+    <script>
+      
+      function clock(){
+            const date = new Date();
+
+            const days = document.querySelector('#day');
+            const months = document.querySelector('#month');
+            const years = document.querySelector('#year');
+            const hours = document.querySelector('#hour');
+            const minutes = document.querySelector('#minute');
+            const seconds = document.querySelector('#second');
+
+
+            let day = date.getDate();
+            let month = date.getUTCMonth() + 1;
+            let year = date.getFullYear();
+            let hour = new Date().getHours();
+            let minute = new Date().getMinutes();
+            let second = new Date().getSeconds();
+
+            days.innerHTML = day;
+            months.innerHTML = month;
+            years.innerHTML = year;
+            hours.innerHTML = hour;
+            minutes.innerHTML = minute;
+            seconds.innerHTML = second;
+        }
+
+      setInterval(clock, 1000);
+        
+    </script>
+  </body>
+</html>
