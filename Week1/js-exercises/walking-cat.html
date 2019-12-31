@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Cat Walk</title>
+  </head>
+  <body>
+    <img style="position:absolute;" src="./img/cat-walk.gif" />
+
+    <script>
+
+      function catWalk() {
+        // store cat Img in a variable.
+        var catImg = document.querySelector("img");
+        var pos = 0;
+
+        // Found midpoint so when it reaches to the middle, for the functoin to change the gif and.
+        let midPoint = (window.innerWidth - 360) / 2;
+
+        // called the frame function every 50 ms
+        var id = setInterval(frame, 50);
+
+        // created a function for the frames
+        function frame() {
+
+          // if photo out of the window, it is going to restart from left side of the screen.
+          if (pos > window.innerWidth) {
+            pos = 0;
+          } else if(pos < midPoint - 4 || pos > midPoint + 4){
+            pos += 3;
+            catImg.style.left = pos + 'px';
+          } else {
+            if (img.src != './img/tenor.gif') {
+              clearInterval(id);
+              img.src = './img/tenor.gif';
+              setTimeout(() => {
+                img.src = './img/cat-walk.gif';
+                return catWalk();
+              }, 5000);
+              pos += 3; 
+            }
+          }
+        }
+      }
+      catWalk();
+
+    </script>
+  </body>
+</html>

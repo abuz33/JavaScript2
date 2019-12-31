@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css?family=Inria+Serif:300,400,700&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Inria Serif', serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fba62f;
+}
+.main-box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #fff;
+  height: 50vh;
+}
+.main-box h1 span{
+  font-size: 36px;
+}
+.color{
+  color: #fba62f;
+}
+.main-box h1
+{
+  font-size: 48px;
+  text-align: center;
+  margin: 40px 20px 0 20px;
+}
+h3 {
+  font-size: 1.5vw;
+  align-self: flex-end;
+  margin: 20px 40px 20px 20px;
+
+}
+main {
+  width: 60vw;
+  display: flex;
+  flex-direction: column;
+}
+button {
+  background-color: #fba62f;
+  height: 40px;
+  width: 130px;
+  color: #fff;
+  font-weight: bold;
+  padding: 10px;
+  border: none;
+  font-size: 12px;
+}
+button:hover {
+  transition: 2;
+}
+button:focus {
+  outline: none;
+}
+
+.bottom{
+  margin: 20px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+.fab{
+  margin-left: 20px;
+  color: #fff;
+  background-color: #fba62f;
+}
+.fa-tumblr{
+  width: 30px;
+}
+.fa-tumblr,
+.fa-twitter{
+  padding: 5px;
+}
+.sec-rect{
+  width: 30vw;
+  height: 40px;
+  background-color: #fff;
+  margin: 6px auto;
+}
