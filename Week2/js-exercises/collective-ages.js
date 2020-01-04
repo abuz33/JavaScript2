@@ -9,8 +9,9 @@ const hackYourFutureMembers = [
 
 
 const collectiveAge = (array) => {
-  const agesOfMembers = hackYourFutureMembers.map(member => member.age);
-  const totalAge = agesOfMembers.reduce((total, member) => total += member);
+  const totalAge = hackYourFutureMembers
+    .map(member => member.age)
+    .reduce((total, member) => total += member);
   return `The collective age of the HYF team is: [${totalAge}]`;
 }
 
