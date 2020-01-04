@@ -5,13 +5,80 @@ const upArrow = document.querySelector('.up');
 const play = document.querySelector('.play');
 const pause = document.querySelector('.pause');
 
+const audioFinish = document.getElementById('finish');
+
 let sessionLengthDisplay = document.querySelector('.length');
 let timeLeftDisplay = document.querySelector('.timer');
 
+let alarm = alert('Timer is Runnig');
+
+//
+let countdown = false;
+
+function increaseLength() {
+  if(!countdown){
+    if (parseInt(sessionLengthDisplay.textContent) < 60) {
+      sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) + 1;
+      minuteConverter(parseInt(sessionLengthDisplay.textContent));
+    } else {
+        alert('It cannot be more than 60');
+        sessionLengthDisplay.textContent = 25;
+        minuteConverter(parseInt(sessionLengthDisplay.textContent));
+    }
+  } else {
+    alarm;
+  }
+}
+
+
+function decreaseLength() {
+  if (!countdown) {
+    if (parseInt(sessionLengthDisplay.textContent) > 1) {
+      sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) - 1;
+      minuteConverter(parseInt(sessionLengthDisplay.textContent));
+    } else {
+      alert('It cannot be less than 1');
+      sessionLengthDisplay.textContent = 25;
+      minuteConverter(parseInt(sessionLengthDisplay.textContent));
+    }
+  } else {
+    alarm;
+  }
+}
+
+function startTimer() {
+  // clear any existing timers
+  clearInterval(countdown);
+  if(!countdown){
+    let seconds = parseInt(sessionLengthDisplay.textContent) * 60;
+    countdown = setInterval(function(){
+      // check if we should stop it!
+      if (seconds > 0) {
+        seconds--;
+
+        // display it
+        timeLeftDisplay.textContent = timeDisplay(seconds);
+      } else {
+        audioFinish.play();
+        timeLeftDisplay.textContent = 'Time is Up!'
+        clearInterval(countdown);
+        countdown = false;
+      }
+    }, 1000);
+  } else {
+    alarm;
+  }
+}
+
+
+
 
 function stopTimer() {
+  clearInterval(countdown);
+  countdown = false;
 
 }
+
 
 
 
@@ -28,66 +95,10 @@ function minuteConverter(minutes) {
 }
 
 
-downArrow.addEventListener('click', () => {
-  sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) - 1;
-  minuteConverter(parseInt(sessionLengthDisplay.textContent));
-});
+downArrow.addEventListener('click', decreaseLength);
 
-upArrow.addEventListener('click', () => {
-  sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) + 1;
-  minuteConverter(parseInt(sessionLengthDisplay.textContent));
-});
+upArrow.addEventListener('click', increaseLength);
 
+play.addEventListener('click', startTimer);
 
-play.addEventListener('click', () => {
-  let countdown = parseInt(sessionLengthDisplay.textContent);
-
-  // clear any existing timers
-  clearInterval(countdown);
-
-  let secondsLeft = Math.round((countdown * 60));
-
-  countdown = setInterval(() => {
-    secondsLeft--;
-    // check if we should stop it!
-    if (secondsLeft < 0) {
-      clearInterval(countdown);
-      return;
-    }
-    // display it
-    timeLeftDisplay.textContent = timeDisplay(secondsLeft);
-  }, 1000);
-});
-
-
-// pause.addEventListener('click', stopTimer());
-
-
-
-
-// function displayTimeLeft(seconds) {
-//   const minutes = Math.floor(seconds / 60);
-//   const remainderSeconds = seconds % 60;
-//   const display = `${minutes}:${remainderSeconds < 10 ? '0' : ''}${remainderSeconds}`;
-//   document.title = display;
-//   timerDisplay.textContent = display;
-// }
-
-// function startTimer() {
-
-//   // clear any existing timers
-//   // clearInterval(countdown);
-
-//   let secondsLeft = Math.round((countdown * 60));
-
-//   setInterval(() => {
-//     secondsLeft--;
-//     // check if we should stop it!
-//     if (secondsLeft < 0) {
-//       clearInterval(countdown);
-//       return;
-//     }
-//     // display it
-//     console.log(secondsLeft);
-//   }, 1000);
-// }
+pause.addEventListener('click', stopTimer);
