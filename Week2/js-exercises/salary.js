@@ -18,6 +18,7 @@ const mondayTasks = [
     duration: 60,
   },
 ];
+
 const rate = 25;
 
 
@@ -29,3 +30,4 @@ let salaryCalc = (arrayOfWork, rate) => {
   return `Your salary of Monday is €${salary}. Spend it wisely.`
 };
 
+console.log(salaryCalc(mondayTasks, rate));
