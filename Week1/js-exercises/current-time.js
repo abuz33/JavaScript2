@@ -11,12 +11,12 @@ function clock() {
             const seconds = document.querySelector('#second');
 
 
-            let day = date.getDate();
-            let month = date.getUTCMonth() + 1;
-            let year = date.getFullYear();
-            let hour = new Date().getHours();
-            let minute = new Date().getMinutes();
-            let second = new Date().getSeconds();
+            const day = date.getDate();
+            const month = date.getUTCMonth() + 1;
+            const year = date.getFullYear();
+            const hour = new Date().getHours();
+            const minute = new Date().getMinutes();
+            const second = new Date().getSeconds();
 
             days.innerHTML = day;
             months.innerHTML = month;
