@@ -47,9 +47,10 @@ function decreaseLength() {
 }
 
 function startTimer() {
-  // clear any existing timers
-  clearInterval(countdown);
+
   if (!countdown) {
+    // clear any existing timers
+    clearInterval(countdown);
     let seconds = parseInt(sessionLengthDisplay.textContent) * 60;
     countdown = setInterval(function () {
       // check if we should stop it!
