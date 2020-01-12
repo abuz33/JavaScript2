@@ -10,23 +10,23 @@ const audioFinish = document.getElementById('finish');
 let sessionLengthDisplay = document.querySelector('.length');
 let timeLeftDisplay = document.querySelector('.timer');
 
-let alarm = alert('Timer is Runnig');
+
 
 //
 let countdown = false;
 
 function increaseLength() {
-  if(!countdown){
+  if (!countdown) {
     if (parseInt(sessionLengthDisplay.textContent) < 60) {
       sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) + 1;
-      minuteConverter(parseInt(sessionLengthDisplay.textContent));
+      minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     } else {
-        alert('It cannot be more than 60');
-        sessionLengthDisplay.textContent = 25;
-        minuteConverter(parseInt(sessionLengthDisplay.textContent));
+      alert('It cannot be more than 59');
+      sessionLengthDisplay.textContent = 59;
+      minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     }
   } else {
-    alarm;
+    alert('Timer is Runnig');
   }
 }
 
@@ -35,23 +35,23 @@ function decreaseLength() {
   if (!countdown) {
     if (parseInt(sessionLengthDisplay.textContent) > 1) {
       sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) - 1;
-      minuteConverter(parseInt(sessionLengthDisplay.textContent));
+      minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     } else {
       alert('It cannot be less than 1');
-      sessionLengthDisplay.textContent = 25;
-      minuteConverter(parseInt(sessionLengthDisplay.textContent));
+      sessionLengthDisplay.textContent = 1;
+      minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     }
   } else {
-    alarm;
+    alert('Timer is Runnig');
   }
 }
 
 function startTimer() {
   // clear any existing timers
   clearInterval(countdown);
-  if(!countdown){
+  if (!countdown) {
     let seconds = parseInt(sessionLengthDisplay.textContent) * 60;
-    countdown = setInterval(function(){
+    countdown = setInterval(function () {
       // check if we should stop it!
       if (seconds > 0) {
         seconds--;
@@ -66,7 +66,7 @@ function startTimer() {
       }
     }, 1000);
   } else {
-    alarm;
+    alert('Timer is Runnig');
   }
 }
 
@@ -89,7 +89,7 @@ function timeDisplay(seconds) {
 }
 
 
-function minuteConverter(minutes) {
+function minuteDisplay(minutes) {
   const display = `${minutes}:00`;
   timeLeftDisplay.textContent = display;
 }
