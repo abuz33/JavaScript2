@@ -2,3 +2,50 @@
   margin: 0;
   padding: 0;
 }
+
+body{
+  background: #6A160B ;
+  width: 100vw;
+  height: 100vh;
+
+}
+.container{
+  position: relative;
+  width: 30%;
+  height: 60%;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #fff; 
+  border-radius: 30px;
+}
+.header{
+  background: #1F030B;
+  color: #fff;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 4px 0;
+  text-align: center;
+}
+
+.input-form form {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.input-form form div {
+  margin: 10px;
+  float: left;
+}
+
+.calc {
+  width: 120px;
+  height: 40px;
+  color: #fff;
+  background-color: #AD113A;
+  text-align: center;
+  margin: 0 50%;
+  transform: translateX(-50%);
+  outline: none;
+}

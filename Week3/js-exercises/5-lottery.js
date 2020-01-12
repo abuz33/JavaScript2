@@ -12,6 +12,8 @@ function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
     if (element % 3 === 0) {
       return threeCallback();
     }
+  })
+  numbers.map(element => {
     if (element % 5 === 0) {
       return fiveCallback();
     }
