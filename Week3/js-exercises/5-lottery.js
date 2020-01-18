@@ -3,37 +3,38 @@
 function threeFive(startIndex, stopIndex, threeCallback, fiveCallback) {
   let numbers = [];
   // make array
-  let index = stopIndex - startIndex;
-  for (let i = 0; i < index + 1; i++) {
-    numbers.push(startIndex);
-    startIndex++;
+  for (let i = startIndex; i <= stopIndex; i++) {
+    numbers.push(i);
   }
-  let newNumbers = numbers.map(element => {
-    if (element % 3 === 0) {
-      return threeCallback();
-    }
-  })
-  numbers.map(element => {
-    if (element % 5 === 0) {
-      return fiveCallback();
-    }
-  })
 
-  return newNumbers;
+
   // start at beginning of array and check if you should call threeCallback or fiveCallback or go on to next
+
+  threeCallback(numbers);
+  fiveCallback(numbers);
+
+  // to see which numbers are in our array.
+  return `The numbers in our list are ${numbers.join(', ')}.`;
 }
 
-function sayThree() {
-  return 'Divisible by 3';
+
+
+function sayThree(array) {
+  let numberDivThree = array.filter(el => el % 3 == 0 && el != 0)
+  console.log(`The number(s) ${numberDivThree.join(', ')} is/are divisible by 3.`);
 };
 
 
-function sayFive() {
-  return 'Divisible by 5';
+function sayFive(array) {
+  let numberDivFive = array.filter(el => el % 5 == 0 && el != 0)
+  console.log(`The number(s) ${numberDivFive.join(', ')} is/are divisible by 5.`);
 };
+
 
 
 console.log(threeFive(10, 15, sayThree, sayFive));
+
+console.log(threeFive(1, 15, sayThree, sayFive));
 
 // Should create an array[10, 11, 12, 13, 14, 15]
 // and call sayFive, sayThree, sayThree, sayFive

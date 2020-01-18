@@ -16,17 +16,19 @@
     </div>
     <div class="general">
       <div class="input-form">
-        <form>
-          <div>
+
+        <form id="form">
+          <div class="bill-div">
             <label for="bill">How much was your bill?</label>
-            <div>
+            <div class="row">
               <p>$</p>
-              <input type="number">
+              <input type="number" id="bill">
             </div>
           </div>
-          <div>
+          <div class="select-options">
             <label for="select">How was your service?</label>
             <select name="" id="select">
+              <option value="0">--- Choose an option ---</option>
               <option value="30">30% - Outstanding</option>
               <option value="20">20% - Good</option>
               <option value="15">15% - It was OK</option>
@@ -36,18 +38,16 @@
           </div>
           <div>
             <label for="num-customer">How many people are sharing the bil?</label>
-            <div>
-              <input type="number">
+            <div class="row">
+              <input type="number" id="num-customer">
               <p>people</p>
             </div>
           </div>
+          <button class="calc" id="calc" type="submit">CALCULATE</button>
         </form>
-        <button class="calc">CALCULATE</button>
+
       </div>
       <div class="output">
-        <h3>TIP AMOUNT</h3>
-        <h3>$4.00</h3>
-        <p><strong>each</strong></p>
       </div>
     </div>
   </div>
