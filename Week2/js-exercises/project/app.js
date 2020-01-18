@@ -21,12 +21,12 @@ function increaseLength() {
       sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) + 1;
       minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     } else {
-      alert('It cannot be more than 59');
+      showAlert('It cannot be more than 59', 'danger');
       sessionLengthDisplay.textContent = 59;
       minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     }
   } else {
-    alert('Timer is Runnig');
+    showAlert('Timer is Runnig', 'danger');
   }
 }
 
@@ -37,17 +37,35 @@ function decreaseLength() {
       sessionLengthDisplay.textContent = parseInt(sessionLengthDisplay.textContent) - 1;
       minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     } else {
-      alert('It cannot be less than 1');
+      showAlert('It cannot be less than 1');
       sessionLengthDisplay.textContent = 1;
       minuteDisplay(parseInt(sessionLengthDisplay.textContent));
     }
   } else {
-    alert('Timer is Runnig');
+    showAlert('Timer is Runnig', 'danger');
   }
 }
 
-function startTimer() {
+function showAlert(message, className) {
+  const div = document.createElement('div');
+  div.className = `alert alert-${className}`;
+  div.appendChild(document.createTextNode(message));
+  const container = document.querySelector('.container');
 
+  const title = document.querySelector('.title');
+
+  container.insertBefore(div, title);
+
+  // Vanish in 3 seconds
+
+  setTimeout( () => {
+      document.querySelector('.alert').remove()
+  }, 3000);
+}
+
+
+function startTimer() {
+  showAlert('Timer has started successfully', 'success')
   if (!countdown) {
     // clear any existing timers
     clearInterval(countdown);
@@ -67,7 +85,7 @@ function startTimer() {
       }
     }, 1000);
   } else {
-    alert('Timer is Runnig');
+    showAlert('Timer is Runnig', 'danger');
   }
 }
 
